@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>버추얼대학교</title>
+<title>안유정 201505030</title>
  <meta name="viewport" content="width=device-width, initial-scal=1.0"/>
  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css"/>
  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -11,6 +11,27 @@
  <!-- fotorama CDN 설정 추가 -->
  <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB -->
+
+<!-- 대학교 소개 자바스크립트 설정 추가 -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#pic_univ").data("flag","false");
+		
+		$("#pic_univ").click(function(){
+			var bflag=$("#pic_univ").data("flag");
+			if(bflag=="false"){
+				bflag="true";
+				$("#pic_univ").removeClass("small");
+				$("#pic_univ").addClass("large");
+			}else{
+				bflag="false";
+				$("#pic_univ").removeClass("large");
+				$("#pic_univ").addClass("small");
+			};
+			$("#pic_univ").data("flag".bflag);
+		});
+	 });
+	</script>
 
  <style type="text/css">
   #logo{
@@ -28,38 +49,60 @@
    		color:#3F3C30;
    		padding-top:10px;
    }
-   .fotorama__caption{
+  #pic_univ{
+   		float:left;
+   		margin-right:10px;
+   		margin-bottom:10px;
+   		-webkit-transition-property:width;
+   		-webkit-transition-duration:.3s;
+   	}
+  .small{
+   		width:30%;
+   	}
+  .large{
+   		width:100%;
+   	}
+  .clear_both{
+   		clear:both;
+  	}
+  .bold_style{
+   		font-weight:bold;
+   		color:#950000;
+   	}	
+  .fotorama__caption{
    		text-align:center;
    		}
    		</style>
 </head>
 <body>
- <div data-role="page" id="main">
- 	<div data-role="header" data-theme="b"> 
-  		<h2 id="logo">가상 대학교</h2>
-  </div>
- <div data-role="content">
-  <ul data-role="listview" data-inset="true">
-   <li><a href="#campus_images">
-    	<img src="images/pic_i.png" alt="" class="ui-li-thumb"/>
-    	<h3 class="title_style">캠퍼스 이미지</h3>
-    </a></li>
-   <li><a href="#">
-    	<img src="images/intro_i.png" alt="" class="ui-li-thumb"/>
-    	<h3 class="title_style">대학교 소개</h3>
-    </a></li>
-   <li><a href="#">
-    	<img src="images/movie_i.png" alt="" class="ui-li-thumb"/>
-    	<h3 class="title_style">홍보동영상</h3>
-    </a></li>
-   <li><a href="#">
-    	<img src="images/map_i.png" alt="" class="ui-li-thumb"/>
-    	<h3 class="title_style">캠퍼스맵</h3>
-    </a></li>
-    </ul>
-  </div><!-- content 끝 -->
+ <!-- 메인 페이지 -->
+ 	<div data-role="page" id="main">
+ 		<div data-role="header" data-theme="b"> 
+  			<h2 id="logo">안유정 201505030</h2>
+  		</div>
+ 	<div data-role="content">
+  		<ul data-role="listview" data-inset="true">
+   			<li><a href="#campus_images">
+    			<img src="images/pic_i.png" alt="" class="ui-li-thumb"/>
+    			<h3 class="title_style">캠퍼스 이미지</h3>
+    		</a></li>
+   			<li><a href="#intro">
+    			<img src="images/intro_i.png" alt="" class="ui-li-thumb"/>
+    			<h3 class="title_style">대학교 소개</h3>
+    		</a></li>
+  			 <li><a href="video.html" rel="external">
+    			<img src="images/movie_i.png" alt="" class="ui-li-thumb"/>
+    			<h3 class="title_style">홍보동영상</h3>
+    		</a></li>
+  			 <li><a href="#">
+    			<img src="images/map_i.png" alt="" class="ui-li-thumb"/>
+    			<h3 class="title_style">캠퍼스맵</h3>
+    		</a></li>
+   		 </ul>
+  	</div><!-- content 끝 -->
  </div><!-- page 끝 -->
- <div data-role="page" id="campus_images" class="gallery-page">
+
+ <div data-role="page" id="campus_images">
  	<div data-role="header">
  		<a href="#main" data-icon="home" data-direction="reverse" class="ui-btn-left">Home</a>
  			<h1>캠퍼스 이미지</h1>
@@ -76,9 +119,27 @@
 			<a href="pic/full/cb07.jpg"><img src="pic/thumb/ca07.jpg" data-caption="채플관"/></a>
 			</div>
 		</div>
-		<div data-role="footer">
-			<h2>버출얼 대학교</h2>
+	<div data-role="footer">
+			<h2>버추얼 대학교</h2>
 			</div>
 	</div>
+	
+<!-- 대학교 소개 페이지 -->
+ <div data-role="page" id="intro">
+ 	<div data-role="header" data-theme="b">
+ 		<a href="#main" data-icon="home" data-direction="reverse" class="ui-btn-left">Home</a>
+ 		<h1>대학교 소개</h1>
+ 	</div>
+	<div data-role="conetnt" data-theme="c">
+		<img class="small" id="pic_univ" src="images/univ.JPG" alt="">
+		<h2>"<strong class="bold_style">시대정신</strong>을 선도하는 열린
+			<strong class="bold_style">학문 공동체</strong>입니다."</h2>
+		<div class="clear_both"></div>
+			<p>안녕하십니까? 버추얼 대학교에 관심을 가져주셔서</p>
+				<p>여러분의 미래를 버추얼 대학교</p>
+				<p>총장 Luke</p>
+		</div>
+</div>
+	
 </body>
 </html>
